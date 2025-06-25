@@ -20,34 +20,14 @@ model User {
   name      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  BatteryData BatteryData[]
 }
 
-model Student {
-  id        Int            @id @default(autoincrement())
-  firstName String
-  lastName  String
-  class_id  Int
-  class     Class          @relation(fields: [class_id], references: [id])
-  groups    StudentGroup[]
-}
-
-model Class {
-  id       Int       @id @default(autoincrement())
-  name     String
-  students Student[]
-}
-
-model Group {
-  id       Int            @id @default(autoincrement())
-  name     String
-  students StudentGroup[]
-}
-
-model StudentGroup {
-  student_id Int // relation scalar field (used in the `@relation` attribute above)
-  student    Student @relation(fields: [student_id], references: [id])
-  group_id   Int // relation scalar field (used in the `@relation` attribute above)
-  group      Group   @relation(fields: [group_id], references: [id])
-
-  @@id([student_id, group_id])
+model BatteryData {
+  id        Int      @id @default(autoincrement())
+  level     Float
+  createdAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }
