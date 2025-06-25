@@ -1,0 +1,174 @@
+### Récupérer les films par autorisation
+GET http://localhost:1337/api/movies
+Content-Type: application/json
+Authorization: BASIC Sab:sab1234
+
+######################################
+############## STUDENTS ##############
+######################################
+
+### Récupérer tous les étudiants
+GET http://localhost:1337/api/students
+
+### Créer un étudiant
+POST http://localhost:1337/api/students
+Content-Type: application/json
+
+{
+    "data": {
+        "firstName": "Romain",
+        "lastName": "Barolin",
+        "class_id": 2
+    }
+}
+
+### Récupérer un étudiant par id
+GET http://localhost:1337/api/students/3
+
+### Modifier un étudiant par id
+PUT http://localhost:1337/api/students/3
+Content-Type: application/json
+
+{
+    "data": {
+        "firstName": "Véronique",
+        "lastName": "Leroux",
+        "class_id": 1
+    }
+}
+
+### Supprimer un étudiant par id
+DELETE http://localhost:1337/api/students/1
+Content-Type: application/json
+
+
+
+#######################################
+############### CLASSES ###############
+#######################################
+
+### Récupérer toutes les classes
+GET http://localhost:1337/api/classes
+
+### Créer une classe
+POST http://localhost:1337/api/classes
+Content-Type: application/json
+
+{
+    "data": {
+        "name": "B3 Création numérique"
+    }
+}
+
+### Récupérer une classe par id
+GET http://localhost:1337/api/classes/2
+
+### Modifier une classe par id
+PUT http://localhost:1337/api/classes/2
+Content-Type: application/json
+
+{
+    "data": {
+        "name": "B3 Digital"
+    }
+}
+
+### Supprimer une classe par id
+DELETE http://localhost:1337/api/classes/1
+Content-Type: application/json
+
+
+
+########################################
+################ GROUPS ################
+########################################
+
+### Récupérer tous les groupes
+GET http://localhost:1337/api/groups
+
+### Créer un groupe
+POST http://localhost:1337/api/groups
+Content-Type: application/json
+
+{
+    "data": {
+        "name": "Groupe B"
+    }
+}
+
+### Récupérer un groupe par id
+GET http://localhost:1337/api/groups/2
+
+### Modifier un groupe par id
+PUT http://localhost:1337/api/groups/2
+Content-Type: application/json
+
+{
+    "data": {
+        "name": "Groupe B"
+    }
+}
+
+### Supprimer un groupe par id
+DELETE http://localhost:1337/api/groups/1
+Content-Type: application/json
+
+
+
+########################################
+############# STUDENTGROUP #############
+########################################
+
+### Ajouter un étudiant à un groupe
+POST http://localhost:1337/api/students/2/groups/1
+Content-Type: application/json
+
+
+
+#######################################
+################ USERS ################
+#######################################
+
+### Récupérer tous les utilisateurs
+GET http://localhost:1337/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJjb3JhbGllLmxlcm91eEBnbWFpbC5jb20iLCJuYW1lIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI1LTAyLTA2VDA4OjUzOjAyLjE3OVoiLCJ1cGRhdGVkQXQiOiIyMDI1LTAyLTA2VDA4OjUzOjAyLjE3OVoiLCJpYXQiOjE3Mzg4MzY4MTZ9.xHV_3D09Zl8GdIijBLStWSKhHHKENYbTHHTKh7AIelc
+
+### Créer un utilisateur
+POST http://localhost:1337/api/users
+Content-Type: application/json
+
+{
+    "data": {
+        "email": "alexis.chaignon@gmail.com",
+        "password": "TestMDP"
+    }
+}
+
+### Récupérer un utilisateur par id hasher -> middleware (vérifier dans le header)
+GET http://localhost:1337/api/users/1
+
+### Modifier un utilisateur par id
+PUT http://localhost:1337/api/users/1
+Content-Type: application/json
+
+{
+    "data": {
+        "email": "sabrina.hammadi@gmail.com",
+        "password": "Kikidu38"
+    }
+}
+
+### Supprimer un utilisateur par id
+DELETE http://localhost:1337/api/users/1
+Content-Type: application/json
+
+###
+POST http://localhost:1337/api/auth/local
+Content-Type: application/json
+
+{
+    "data": {
+        "email": "coralie.leroux@gmail.com",
+        "password": "MonsuperMDP"
+    }
+}
